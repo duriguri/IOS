@@ -1,5 +1,6 @@
 import UIKit
 
+/*
 // --- Tuple
 
 let coordinates = (4,6)
@@ -786,33 +787,95 @@ class
 //        print("My name is \(firstName) \(lastName)")
 //    }
 //}
+*/
+
+struct Grade {
+    var letter: Character
+    var points: Double
+    var credits: Double
+}
+
+class Person {
+    var firstName: String
+    var lastName: String
+
+    init(firstName: String, lastName: String) {
+        self.firstName = firstName
+        self.lastName = lastName
+    }
+
+    func printMyName() {
+        print("My name is \(firstName) \(lastName)")
+    }
+}
+
+class Student: Person{
+    var grades: [Grade] = []
+}
+
+let jay = Person(firstName: "Jay", lastName: "Lee")
+let jason = Student(firstName: "Jasson", lastName: "Lee")
+
+jay.firstName
+jason.firstName
+
+jay.printMyName()
+
+let math = Grade(letter: "B", points: 8.7, credits: 3)
+let history = Grade(letter: "A", points: 10.0, credits: 3)
+jason.grades.append(math)
+jason.grades.append(history)
+jason.grades.count
+
+class StudentAthelete: Student {
+    var minimumTrainigTime: Int = 2
+    var trainedTime: Int = 0
+    
+    func train() {
+        trainedTime += 1
+    }
+}
+
+class FootballPlayer: StudentAthelete {
+    var footballTeam = "FC Swift"
+    
+    override func train() {
+        trainedTime += 2
+    }
+}
+
+var athelete1 = StudentAthelete(firstName: "Yuna", lastName: "Kim")
+var athelete2 = FootballPlayer(firstName: "Heung", lastName: "Son")
+
+athelete1.firstName
+athelete2.firstName
+
+athelete1.grades.append(math)
+athelete2.grades.append(math)
+
+athelete1.minimumTrainigTime
+athelete2.minimumTrainigTime
+
+athelete2.footballTeam
+
+athelete1.train()
+athelete1.trainedTime
+
+athelete2.train()
+athelete2.trainedTime
+
+athelete1 = athelete2 as StudentAthelete
+
+if let son = athelete1 as? FootballPlayer {
+    print("team: \(son.footballTeam)")
+}
+/* 상속하면 좋은 경우
+ 1. 단일책임: 하나에 역할만 해야됨
+ 2. 타입이 분명해야 할때
+*/
 
 
-// 처음 주어진 코드
-//struct Grade {
-//    var letter: Character
-//    var points: Double
-//    var credits: Double
-//}
-//
-//class Person {
-//    var firstName: String
-//    var lastName: String
-//
-//    init(firstName: String, lastName: String) {
-//        self.firstName = firstName
-//        self.lastName = lastName
-//    }
-//
-//    func printMyName() {
-//        print("My name is \(firstName) \(lastName)")
-//    }
-//}
-//
-//class Student: Person{
-//    var grades: [Grade] = []
-//
-//}
-//
-//let jay = Person(firstName: "Jay", lastName: "Lee")
-//let jason = Student(firstName: "Jasson", lastName: "Lee")
+
+
+
+
